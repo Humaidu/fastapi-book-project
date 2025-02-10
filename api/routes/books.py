@@ -50,7 +50,6 @@ async def get_books() -> OrderedDict[int, Book]:
 
 @router.get("/api/v1/books/{book_id}", status_code=status.HTTP_200_OK)
 async def get_book_by_id(book_id: int):
-    """Retrieve a book by its ID."""
     book = db.get_book(book_id)
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
