@@ -1,0 +1,29 @@
+name: Book Management Test CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main  # Trigger CI on pull requests to the main branch
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3  # Get the latest code from the repo
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.9"  # Use Python 3.9
+
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Pytest
+        run: |
+          pytest 
