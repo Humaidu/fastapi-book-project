@@ -48,4 +48,12 @@ jobs:
             git clone https://github.com/Humaidu/fastapi-book-project.git
             cd fastapi-book-project/
             git pull
+
+            # Stop and remove any existing containers
+            sudo docker-compose down
+            
+            # Remove any leftover containers with the same name
+            sudo docker rm -f fastapi-app || true
+            
+            # Start fresh
             sudo docker-compose up -d --build
